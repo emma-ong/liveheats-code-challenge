@@ -1,7 +1,6 @@
 "use client";
-
 import React from "react";
-import { BUTTON } from "@/app/constants";
+import { BUTTON } from "../../constants";
 
 export const Button = ({ value, onClick, type, disabled = false }) => {
   return (
