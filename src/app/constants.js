@@ -10,6 +10,7 @@ export const LABELS = {
 export const BUTTON = {
   VALUES: {
     REMOVE: "Remove",
+    ADD: "Add another student",
   },
   TYPE: {
     SUBMIT: "submit",

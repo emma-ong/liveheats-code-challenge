@@ -5,3 +5,7 @@
     justify-content: center;
     margin-bottom: center;
 };
+
+.errorMsg {
+    color: red;
+}

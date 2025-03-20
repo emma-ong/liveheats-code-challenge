@@ -7,6 +7,21 @@ import { Button } from "../button";
 
 export const CreateForm = () => {
   const [students, setStudents] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [submitFlag, setSubmitFlag] = useState(false);
+
+  const errorMessages = [
+    {
+      condition: errors.minStudentsRequired,
+      message: errors.minStudentsRequired,
+    },
+    { condition: errors.uniqueLaneNumbers, message: errors.uniqueLaneNumbers },
+    {
+      condition: errors.uniqueStudentNames,
+      message: errors.uniqueStudentNames,
+    },
+  ];
 
   const addStudent = () => {
     setStudents([...students, { studentName: "", laneNumber: "" }]);
@@ -26,6 +41,13 @@ export const CreateForm = () => {
 
   return (
     <>
+      {!canSubmit && !submitFlag && (
+        <Button
+          value={BUTTON.VALUES.ADD}
+          onClick={() => addStudent()}
+          type={BUTTON.VALUES.BUTTON}
+        />
+      )}
       <form>
         {students.map((student, index) => (
           <div className={styles.createForm} key={index}>
@@ -60,6 +82,15 @@ export const CreateForm = () => {
             />
           </div>
         ))}
+
+        {errorMessages.map(
+          (error, index) =>
+            error.condition && (
+              <p key={index} className={styles.errorMsg}>
+                {error.message}
+              </p>
+            )
+        )}
       </form>
     </>
   );
