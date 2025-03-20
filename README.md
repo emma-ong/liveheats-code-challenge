@@ -36,28 +36,22 @@ This document outlines the user journey for creating a race event using the form
 
 ### 2. **Input Validation**
 As the user enters student names and lane numbers, the system continuously validates the data:
-- **Minimum Student Requirement:** At least two students are required to create a valid race entry.
-- **Unique Lane Numbers:** Each student must have a unique lane number.
-- **Unique Student Names:** Each student must have a unique name.
+- **ALL** fields are required
+- **Minimum Student Requirement:** A race can only be created with at least 2 students
+- **Unique Lane Numbers:** Different students cannot be assigned to the same lane
+- **Unique Student Names:** The same student cannot be assigned to more than one lane in the same race
 
 ### 3. **Remove Students (Optional)**
 - The user can remove a student from the list by clicking the "Remove" button next to the student's input fields.
 - When a student is removed, their name and lane number will be deleted from the list.
 
-### 4. **Error Handling**
-If any validation fails, error messages will be displayed to inform the user:
-- "At least 2 students are required."
-- "Lane numbers must be unique."
-- "Student names must be unique."
-- These error messages will be shown in **red** below the form fields.
-
-### 5. **Submit the Form**
+### 4. **Submit the Form**
 - When the form is correctly filled out, the "Submit" button will be enabled.
 - The user can click on "Submit" to complete the race creation.
 - If the submission is successful, the data is saved to **localStorage** to persist across page reloads.
 - The form will reset, clearing all input fields for a fresh start.
 
-### 6. **Post-Submission Action**
+### 5. **Post-Submission Action**
 After submitting the form:
 - The user is given an option to **edit** the race's placement data via a redirect button to another page.
 
@@ -73,21 +67,12 @@ After submitting the form:
 
 ### 2. **Input Validation**
 As the user edits the placements, the system performs continuous validation:
-- **Missing Placement:** The system checks if any placement field is left empty.
-- **Minimum Placement:** A valid race requires a minimum of one placement to be filled.
-- **No Gaps in Placement Values:** Placements must form a continuous sequence, starting at 1 with no gaps.
+- **ALL** fields are required
+- **Missing Placement:** Placements are missing and/or there are gaps
+- **Minimum Placement:** Placements must be sequential starting from 1
 - If there are multiple editable race forms on the page, **ALL** forms need to pass validation before they are submitted together
 
-### 3. **Error Handling**
-- If any validation fails, error messages will be displayed:
-  - **Missing Placement:** "Placements are missing."
-  - **Minimum Placement:** "At least one placement is required."
-  - **No Gaps in Placement Values:** "Placements must be sequential starting from 1."
-
-These error messages will be shown in **red** below the form fields.
-
 ### 4. **Submit the Form**
-- When the form is correctly filled out and passes validation, the "Submit" button will be enabled.
 - The user can click on "Submit" to confirm the placements and complete the race editing.
   - If successful, the race data is updated in **localStorage**, and the form is marked as submitted.
 - If the placements are correctly filled, a **confirmation message** is displayed with an option to view the updated race/s.
@@ -95,7 +80,6 @@ These error messages will be shown in **red** below the form fields.
 ### 5. **Post-Submission Action**
 After submitting the form:
 - The user is given an option to **view the updated race data** via a button that redirects them to another page.
-- The user can **view or modify** the stored race placements at any point in the app.
 
 ## User Flow - View Results
 
