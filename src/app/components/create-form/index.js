@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { BUTTON, ERROR_MESSAGES, LABELS } from "../../constants";
+import { BUTTON, ERROR_MESSAGES, INPUT, LABELS } from "../../constants";
 import { Button } from "../button";
 import { useRouter } from "next/navigation";
 
@@ -86,20 +86,13 @@ export const CreateForm = () => {
           <Button
             value={BUTTON.VALUES.EDIT}
             onClick={() => router.push(BUTTON.PATHS.EDIT)}
-            type={BUTTON.TYPE.SUBMIT}
+            type={BUTTON.TYPE.RACE_SUBMITTED}
           />
         </div>
       );
     }
 
-    return (
-      <Button
-        type={BUTTON.TYPE.SUBMIT}
-        value={`${BUTTON.TYPE.SUBMIT.charAt(
-          0
-        ).toUpperCase()}${BUTTON.TYPE.SUBMIT.slice(1)}`}
-      />
-    );
+    return <Button type={BUTTON.TYPE.SUBMIT} value={BUTTON.VALUES.SUBMIT} />;
   };
 
   useEffect(() => {
@@ -151,26 +144,26 @@ export const CreateForm = () => {
       <form onSubmit={handleSubmit}>
         {students.map((student, index) => (
           <div style={createFormStyle} key={index}>
-            <label htmlFor={`${LABELS.STUDENT.ID}-${index}`}>
-              {LABELS.STUDENT.STUDENT_LABEL} {index + 1}
+            <label htmlFor={`${INPUT.STUDENT.ID}-${index}`}>
+              {INPUT.STUDENT.LABEL} {index + 1}
             </label>
             <input
-              data-testid={`${LABELS.STUDENT.ID}-${index}`}
+              data-testid={`${INPUT.STUDENT.ID}-${index}`}
               type="text"
-              id={`${LABELS.STUDENT.ID}-${index}`}
-              name={LABELS.STUDENT.ID}
+              id={`${INPUT.STUDENT.ID}-${index}`}
+              name={INPUT.STUDENT.ID}
               value={student.studentName}
               onChange={(e) => handleInputChange(index, e)}
               required
             />
-            <label htmlFor={`${LABELS.STUDENT.LANE_ID}-${index}`}>
-              {LABELS.STUDENT.LANE_LABEL}
+            <label htmlFor={`${INPUT.LANE.ID}-${index}`}>
+              {INPUT.LANE.LABEL}
             </label>
             <input
-              data-testid={`${LABELS.STUDENT.LANE_ID}-${index}`}
+              data-testid={`${INPUT.LANE.ID}-${index}`}
               type="number"
-              id={`${LABELS.STUDENT.LANE_ID}-${index}`}
-              name={LABELS.STUDENT.LANE_ID}
+              id={`${INPUT.LANE.ID}-${index}`}
+              name={INPUT.LANE.ID}
               value={student.laneNumber}
               onChange={(e) => handleInputChange(index, e)}
               required
