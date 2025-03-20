@@ -63,7 +63,7 @@ After submitting the form:
   - **Student Name** (view-only, cannot be edited)
   - **Lane Number** (view-only, cannot be edited)
   - **Placement** (editable)
-- The user can modify the **Placement** value for each student. Placements must be sequential, starting from 1 (i.e., no gaps in the numbering).
+- The user can only modify the **Placement** value for each student. Placements must be sequential, starting from 1 (i.e., no gaps in the numbering).
 
 ### 2. **Input Validation**
 As the user edits the placements, the system performs continuous validation:
