@@ -18,7 +18,7 @@ yarn test
 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result, this should redirect you to the **Create A Race** page [http://localhost:3000](http://localhost:3000) create.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result, this should redirect you to the **Create A Race** page [http://localhost:3000/create](http://localhost:3000/create).
 
 # User Journey for Creating a Race Form
 
