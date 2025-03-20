@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { useRouter } from "next/navigation";
 import { ViewResults } from ".";
+import { BUTTON } from "../../constants";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -51,7 +52,7 @@ describe("ViewResults", () => {
     const createButton = screen.getByText(/Create/i);
     fireEvent.click(createButton);
 
-    expect(routerPushMock).toHaveBeenCalledWith("/create");
+    expect(routerPushMock).toHaveBeenCalledWith(BUTTON.PATHS.CREATE);
   });
 
   test("Should show no races message when no races are in localStorage", () => {

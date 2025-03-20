@@ -3,6 +3,7 @@ import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { CreateForm } from ".";
 import { useRouter } from "next/navigation";
+import { BUTTON, INPUT } from "../../constants";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -29,8 +30,8 @@ describe("CreateForm", () => {
     const studentNameInput1 = screen.getByLabelText(/Student Name/i);
     const laneNumberInput1 = screen.getByLabelText(/Lane Number/i);
 
-    expect(studentNameInput1.id).toBe("studentName-0");
-    expect(laneNumberInput1.id).toBe("laneNumber-0");
+    expect(studentNameInput1.id).toBe(`${INPUT.STUDENT.ID}-0`);
+    expect(laneNumberInput1.id).toBe(`${INPUT.LANE.ID}-0`);
 
     fireEvent.change(studentNameInput1, { target: { value: "Competitor 1" } });
     fireEvent.change(laneNumberInput1, { target: { value: "1" } });
@@ -50,8 +51,8 @@ describe("CreateForm", () => {
     for (let i = 0; i < 5; i++) {
       fireEvent.click(screen.getByText(/Add another student/i));
 
-      const studentNameInput = screen.getByTestId(`studentName-${i}`);
-      const laneNumberInput = screen.getByTestId(`laneNumber-${i}`);
+      const studentNameInput = screen.getByTestId(`${INPUT.STUDENT.ID}-${i}`);
+      const laneNumberInput = screen.getByTestId(`${INPUT.LANE.ID}-${i}`);
 
       fireEvent.change(studentNameInput, {
         target: { value: `Competitor ${i + 1}` },
@@ -82,10 +83,10 @@ describe("CreateForm", () => {
     fireEvent.click(screen.getByText(/Add another student/i));
     fireEvent.click(screen.getByText(/Add another student/i));
 
-    const studentNameInput1 = screen.getByTestId(`studentName-0`);
-    const laneNumberInput1 = screen.getByTestId(`laneNumber-0`);
-    const studentNameInput2 = screen.getByTestId(`studentName-1`);
-    const laneNumberInput2 = screen.getByTestId(`laneNumber-1`);
+    const studentNameInput1 = screen.getByTestId(`${INPUT.STUDENT.ID}-0`);
+    const laneNumberInput1 = screen.getByTestId(`${INPUT.LANE.ID}-0`);
+    const studentNameInput2 = screen.getByTestId(`${INPUT.STUDENT.ID}-1`);
+    const laneNumberInput2 = screen.getByTestId(`${INPUT.LANE.ID}-1`);
 
     fireEvent.change(studentNameInput1, { target: { value: "Competitor x" } });
     fireEvent.change(laneNumberInput1, { target: { value: "3" } });
@@ -113,8 +114,8 @@ describe("CreateForm", () => {
     const studentNameInput1 = screen.getByLabelText(/Student Name/i);
     const laneNumberInput1 = screen.getByLabelText(/Lane Number/i);
 
-    expect(studentNameInput1.id).toBe("studentName-0");
-    expect(laneNumberInput1.id).toBe("laneNumber-0");
+    expect(studentNameInput1.id).toBe(`${INPUT.STUDENT.ID}-0`);
+    expect(laneNumberInput1.id).toBe(`${INPUT.LANE.ID}-0`);
 
     fireEvent.change(studentNameInput1, { target: { value: "Competitor 1" } });
     fireEvent.change(laneNumberInput1, { target: { value: "1" } });
@@ -135,8 +136,8 @@ describe("CreateForm", () => {
     for (let i = 0; i < 2; i++) {
       fireEvent.click(screen.getByText(/Add another student/i));
 
-      const studentNameInput = screen.getByTestId(`studentName-${i}`);
-      const laneNumberInput = screen.getByTestId(`laneNumber-${i}`);
+      const studentNameInput = screen.getByTestId(`${INPUT.STUDENT.ID}-${i}`);
+      const laneNumberInput = screen.getByTestId(`${INPUT.LANE.ID}-${i}`);
 
       fireEvent.change(studentNameInput, { target: { value: `Competitor 1` } });
       fireEvent.change(laneNumberInput, { target: { value: `${i + 1}` } });
@@ -156,8 +157,8 @@ describe("CreateForm", () => {
     for (let i = 0; i < 2; i++) {
       fireEvent.click(screen.getByText(/Add another student/i));
 
-      const studentNameInput = screen.getByTestId(`studentName-${i}`);
-      const laneNumberInput = screen.getByTestId(`laneNumber-${i}`);
+      const studentNameInput = screen.getByTestId(`${INPUT.STUDENT.ID}-${i}`);
+      const laneNumberInput = screen.getByTestId(`${INPUT.LANE.ID}-${i}`);
 
       fireEvent.change(studentNameInput, {
         target: { value: `Competitor ${i + 1}` },
@@ -183,8 +184,8 @@ describe("CreateForm", () => {
     for (let i = 0; i < 5; i++) {
       fireEvent.click(screen.getByText(/Add another student/i));
 
-      const studentNameInput = screen.getByTestId(`studentName-${i}`);
-      const laneNumberInput = screen.getByTestId(`laneNumber-${i}`);
+      const studentNameInput = screen.getByTestId(`${INPUT.STUDENT.ID}-${i}`);
+      const laneNumberInput = screen.getByTestId(`${INPUT.LANE.ID}-${i}`);
 
       fireEvent.change(studentNameInput, {
         target: { value: `Competitor ${i + 1}` },
@@ -193,7 +194,9 @@ describe("CreateForm", () => {
       fireEvent.change(laneNumberInput, { target: { value: `${i + 1}` } });
     }
 
-    const submitButton = screen.getByText("Submit", { exact: true });
+    const submitButton = screen.getByText(BUTTON.VALUES.SUBMIT, {
+      exact: true,
+    });
 
     fireEvent.click(submitButton);
 
